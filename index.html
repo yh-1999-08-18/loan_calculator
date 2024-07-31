@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>贷款计算器</title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/formula.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="wrap" class="wrap">
+      <div class="left_content">
+        <div class="top">
+          <div class="loan">
+            <div class="label" style="width: 50%">贷款金额（元）</div>
+            <div id="sum" class="value">10000</div>
+          </div>
+          <div class="term">
+            <div class="label">贷款期（月）</div>
+            <div
+              id="term"
+              onclick="modalShow()"
+              style="cursor: pointer"
+              class="value"></div>
+          </div>
+          <div class="btn_wrap">
+            <div class="year btn">年化利率</div>
+            <div class="month btn">月息</div>
+            <div class="thousand btn">万元系数</div>
+          </div>
+          <div class="radio-inline">
+            <label for="killOrder1">还款方式</label>
+            <div style="display: flex; align-items: center">
+              <input
+                type="radio"
+                name="killOrder"
+                id="killOrder1"
+                value="0"
+                checked />
+              <label for="killOrder1">等额本息</label>
+            </div>
+            <div style="display: flex; align-items: center">
+              <input type="radio" name="killOrder" id="killOrder2" value="1" />
+              <label for="killOrder2">等本等息</label>
+            </div>
+          </div>
+          <div id="btn_groups" class="button_groups">
+            <div class="result" id="compute">计算结果</div>
+            <div class="reset" id="reset">重置</div>
+          </div>
+        </div>
+        <div class="outcome_title">计算结果如下：</div>
+        <div id="result_list" class="bottom"></div>
+      </div>
+      <div class="right_content">
+        <div class="top_card">
+          <div class="mouth_num">
+            <div class="t_content">
+              <img src="./assets/glod.png" />
+              <div class="label_text">每月应还</div>
+            </div>
+            <div class="b_content">
+              <div class="money" id="month_num">0.00</div>
+              <div class="money_unit">元</div>
+            </div>
+          </div>
+          <div class="money_list">
+            <div class="item">
+              <div class="title">贷款金额</div>
+              <div class="num" id="sum_num">--</div>
+            </div>
+            <div class="item">
+              <div class="title">利息总额</div>
+              <div class="num" id="interest_sum">--</div>
+            </div>
+            <div class="item">
+              <div class="title">贷款期数</div>
+              <div class="num" id="term_num">--</div>
+            </div>
+          </div>
+        </div>
+        <div class="sub_title">
+          每月还款金额不变，<text style="color: #202059"
+            >计算结果仅供参考。</text
+          >
+        </div>
+        <div class="head">
+          <div class="head_text">期数</div>
+          <div class="head_text">月供总额</div>
+          <div class="head_text">月供本金</div>
+          <div class="head_text">月供利息</div>
+          <div class="head_text">剩余本金</div>
+        </div>
+        <div id="table" class="list"></div>
+      </div>
+      <div class="middle_btn" id="creat_table">还款计划表</div>
+      <div class="car"></div>
+    </div>
+    <div id="modal" class="marsk">
+      <div class="termModal">
+        <div class="top">
+          <div class="title">请选择贷款期限</div>
+          <div class="close" onclick="modalDide()">X</div>
+        </div>
+        <div id="listContent" class="listContent">
+          <div id="termItem" class="item" onclick="setIndex(0)">6期</div>
+          <div id="termItem" class="item" onclick="setIndex(1)">12期</div>
+          <div id="termItem" class="item" onclick="setIndex(2)">18期</div>
+          <div id="termItem" class="item" onclick="setIndex(3)">24期</div>
+          <div id="termItem" class="item" onclick="setIndex(4)">30期</div>
+          <div id="termItem" class="item" onclick="setIndex(5)">36期</div>
+          <div id="termItem" class="item" onclick="setIndex(6)">48期</div>
+          <div id="termItem" class="item" onclick="setIndex(7)">60期</div>
+        </div>
+        <div class="bottom" onclick="termSure()">确定</div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/index.js"></script>
+</html>
